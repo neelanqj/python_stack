@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "server.py", line 4, in <module>
+    mysql = MySQLConnector(app,'friendsdb')
+  File "C:\python_stack\flask_MySQL\friends\mysqlconnection.py", line 40, in MySQLConnector
+    return MySQLConnection(app, db)
+  File "C:\python_stack\flask_MySQL\friends\mysqlconnection.py", line 15, in __init__
+    DATABASE_URI = "mysql://{}:{}@127.0.0.1:{}/{}".format(config['user1'], config['password'], config['port'], config['database'])
+KeyError: 'user1'
+
+OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)") (Background on this error at: http://sqlalche.me/e/e3q8)
+
+OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'rootd'@'localhost' (using password: NO)") (Background on this error at: http://sqlalche.me/e/e3q8)

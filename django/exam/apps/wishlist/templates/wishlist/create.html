@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Gateway</title>	
+		<meta charset="utf-8">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<p class="text-right"><a href="/dashboard">Home</a> <a href="/logout">Logout</a></p>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					{% if messages %}
+					<ul class="messages">
+						{% for message in messages %}
+						<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<h2>Add a New Book Title and a Review:</h2><br/>
+					<form action="/books/add" method="post">
+						{% csrf_token %}
+						<!-- Formatted according to bootstrap website, although it seems bulky, but I tried to avoid doing my own css -->
+						<!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
+						<label for="title" class="col-sm-3 col-form-label">Book Title:</label>
+						<div class="col-sm-9">
+							<input type="text" id="title" class="form-control" name="title"><br/>
+						</div>
+						Author:
+						<label for="author" class="col-sm-3 col-form-label">Choose from the list:</label>
+						<div class="col-sm-9">
+							<select name="author">
+								<option>Stephen King</option>
+							</select><br/>
+						</div>
+						
+						<label for="new_author" class="col-sm-3 col-form-label">Or add a new author:</label>
+						<div class="col-sm-9">
+							<input type="text" id="new_author" class="form-control" name="new_author"><br/>
+						</div>
+						
+						<label for="review" class="col-sm-3 col-form-label">Review:</label>
+						<div class="col-sm-9">
+							<textarea name="review"></textarea>
+						</div>
+
+						<label for="rating" class="col-sm-3 col-form-label">Rating:</label>
+						<div class="col-sm-9">
+							<select name="rating">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select> stars.<br/>
+						</div>								
+						
+						<input class="btn btn-lg btn-primary btn-block" type="submit" value="Add Book and Review" />
+					
+					</form>
+				</div>
+			</div>
+		<div 
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Time Display</title>
+		<meta charset="utf-8">
+		<style>
+			.max_size {
+				width:100%;
+			}
+			.box {
+				border: 1px solid black;
+				margin: 10px auto ;
+				display:block;
+				position: relative;
+			}
+			
+			.center {
+				text-align: center;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrapper center">
+			<div> <h3>Thank you for your business!</h3> </div>
+			<div>
+				We charged your credit card for {{ charge }}<br/>
+				You have ordered {{ total_items_bought }} items so far and spent <br/>
+				{{ total_cost }} dollars with Amadon.com!				
+			</div>
+			<a href="/">Go Back</a>
+		</div>
+	</body>
+</html>

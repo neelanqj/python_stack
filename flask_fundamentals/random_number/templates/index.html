@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Form Test Index</title>
+	   <style>
+			div {
+				width:25%;
+				padding: 50px 10px 50px 10px;
+				margin: auto 0px;
+			}
+			.hide {
+				display: none;
+				visibility: hidden;
+			}
+	   </style>
+    </head>
+    <body>
+
+		<center>
+			<h1>Welcome to the great number game!</h1>
+			I am thinking of a number between 1 and 100!<br/>
+			Take a guess!
+			<br/>
+			<div id="tooLow" style="background-color: red; color: white"{% if flag != 'low' %} class ="hide" {% endif %}>
+				<h1>TOO LOW!</h1>
+			</div>
+			<div id="tooHigh" style="background-color: red; color: white" {% if flag != 'high' %} class ="hide" {% endif %}>
+				<h1>TOO HIGH!</h1>
+			</div>
+			<div id="correct" style="background-color: green; color: white" {% if flag != 'correct' %} class ="hide" {% endif %}>
+				<h1>{{ guess }} was the<br/>number!</h1><br/>
+				<form action="/" method="GET">
+					<input type="submit" value="Play Again"><br/>
+				</form>
+			</div>
+			<div id="gameOn" {% if flag == 'correct' %} class ="hide" {% endif %}>
+				<form action="/checkAnswer" method="POST">
+					<input type="text" id="guess" name="guess" /><br/>
+					<input type="submit" value="Submit"><br/>
+				</form>
+			</div>
+		</center>
+
+    </body>
+</html>

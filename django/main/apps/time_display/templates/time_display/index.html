@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Time Display</title>
+		<meta charset="utf-8">
+		<style>
+			#wrapper {
+				width:100%;
+			}
+			.box {
+				border: 1px solid black;
+				margin: 10px auto ;
+				display:block;
+				text-align: center;
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="box" style="width:25%">The current time and date is:</div>
+			<div class="box" style="width:50%">
+				<h1>{{ date }}</h1>
+				<h1>{{ time }}</h1>
+			</div>
+		</div>
+	</body>
+</html>

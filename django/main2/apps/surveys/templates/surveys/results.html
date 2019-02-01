@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Time Display</title>
+		<meta charset="utf-8">
+		<style>
+			.max_size {
+				width:100%;
+			}
+			.box {
+				border: 1px solid black;
+				margin: 10px auto ;
+				display:block;
+				position: relative;
+			}
+			
+			.center {
+				text-align: center;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrapper center">
+			<div> Thanks for submitting this form, you have submitted this form {{ pageSubmits }} times now. </div>
+			<div>
+				<ul>Submitted information</ul><br/>
+				<table>
+					<tr>
+						<td>Name:</td><td>{{ name }} </td>
+					</tr>
+					<tr>
+						<td>Dojo Location:</td><td>{{ location }} </td>
+					</tr>
+					<tr>
+						<td>Favorite Language:</td><td>{{ language }} </td>
+					</tr>
+					<tr>
+						<td>Comment:</td><td>{{ comment }} </td>
+					</tr>
+				</table>
+				
+			</div>
+			<a href="/">Go Back</a>
+		</div>
+	</body>
+</html>

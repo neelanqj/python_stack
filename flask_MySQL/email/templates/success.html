@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>Successful</title>
+</head>
+<body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  
+  <u>The Email Address Entered:</u>
+  {% for email in emails: %}
+   <p>{{ email['email'] }} {{ email['date'] }}</p>
+  {% endfor %}
+</body>
+</html>

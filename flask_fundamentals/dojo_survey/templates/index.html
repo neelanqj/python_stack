@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/default.css') }}" />
+	</head>
+	<body>
+		<div id="form">
+		  {% with messages = get_flashed_messages() %}
+			{% if messages %}
+			  {% for message in messages %}
+				<p>{{message}}</p>
+			  {% endfor %}
+			{% endif %}
+		  {% endwith %}
+		  
+			<form action='/result' method='post'>
+				<table>
+					<tr>
+						<td>Your Name:</td>
+						<td>
+							<input type="text" name='name' id='name' />
+						</td>
+					</tr>
+					<tr>
+						<td>Dojo Location: </td>
+						<td>
+							<select name="location" id="location">
+								<option value=""></option>
+								<option value="San Jose">San Jose</option>
+								<option value="Toronto">Toronto</option>
+								<option value="Thailand">Thailand</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Your Location:
+						</td>
+						<td>
+							<select name="language" id="language">
+								<option value=""></option>
+								<option value="Python">Python</option>
+								<option value="Java">Java</option>
+								<option value="C">C</option>
+							</select>
+						</td>
+					</tr>
+				<tr>
+					<td colspan="2">
+						Comment (optional):<br/>
+							<textarea name='comment' id='comment'  rows="4" cols="50"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input class="button" type="submit" value="Button" />
+					</td>
+				</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>

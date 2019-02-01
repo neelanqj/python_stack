@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Gateway</title>	
+		<meta charset="utf-8">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<style>
+			.form_button {
+				background:none!important;
+				 border:none; 
+				 padding:0!important;
+				
+				/*optional*/
+				font-family:arial,sans-serif; /*input has OS specific font-family*/
+				 color:#069;
+				 text-decoration:underline;
+				 cursor:pointer;
+			}
+		</style>
+	</head>
+	<body>
+
+		<p class="text-right"><a href="/logout">Logout</a></p>
+		<div class="container">
+			<h1>Hello, {{ user.name }}!</h1>
+			
+			<div class="row">
+				<div class="col">
+					{% if messages %}
+					<ul class="messages">
+						{% for message in messages %}
+						<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+				</div>
+			</div>
+			<br/>
+			Your Wish List
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Item</th>
+						<th scope="col">Added By</th>
+						<th scope="col">Date Added</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in wishlist %}
+					<tr>
+						<td>
+							<a href="wish_items/{{item.items.id}}">{{ item.items.name}}</a>
+						</td>
+						<td>
+							{{ item.items.created_by.username }}
+						</td>
+						<td>
+							{{ item.created_at }}
+						</td>
+						<td>
+							<a href="/wish_items/{{ item.items.id }}/delete">
+								{% if item.items.created_by.username == user.username %}
+									Delete
+								{% else %}
+									Remove item from wishlist
+								{% endif %}
+							</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<br/><br/>
+			Other Users' Wish List
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Item</th>
+						<th scope="col">Added By</th>
+						<th scope="col">Date Added</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in others_wishlist %}
+					<tr>
+						<td>
+							<a href="wish_items/{{item.items.id}}">{{ item.items.name}}</a>
+						</td>
+						<td>							
+							{{ item.items.created_by.username }}
+						</td>
+						<td>
+							{{ item.created_at }}
+						</td>
+						<td>
+							<form action="/add_item" method="post">
+								{% csrf_token %}
+								<input type="hidden" value="{{ item.items.name }}" name="name">
+								<input type="submit" class="form_button" value="Add To My Wishlist" />
+							</form>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<br/><br/>
+			
+			<div class="row">
+				<div class="col">
+					<p class="text-right"><a href="/wish_items/create">Add Item</a></p>
+				</div>
+			</div>
+		<div 
+	</body>
+</html>

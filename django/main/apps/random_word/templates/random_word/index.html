@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Time Display</title>
+		<meta charset="utf-8">
+		<style>
+			.max_size {
+				width:100%;
+			}
+			.box {
+				border: 1px solid black;
+				margin: 10px auto ;
+				display:block;
+				position: relative;
+			}
+			
+			.center {
+				text-align: center;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrapper center">
+			Random Word (attempt #{{ attempt }}):
+			<div class="box" style="width:50%">
+				<h1>{{ randomWord }}</h1>
+			</div>
+			<form action="/" method="post">
+				{% csrf_token %}
+				<input type="submit" value="Generate" align="center" />
+			</form>
+		</div>
+	</body>
+</html>

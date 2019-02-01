@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Wall</title>
+		<style>
+			.indent {
+				padding-left: 30px;
+			}
+			.inline {
+				display: inline-block;
+			}
+			
+			.right {
+				right: 10px;
+				text-align:right;
+			}
+			#header {
+				width: 100%;
+			}
+			#user {
+				width:75%;
+			}
+			#wrapper {
+				width: 800px;
+				margin: 0px auto;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<div class="inline" id="title"><h2>CodingDojo Wall</h2></div>
+			<div class="inline right" id="user">Welcome {{ current_user }}! <a href="/logoff">log off</a></div>
+			<hr/>
+		</div>
+		<div id="wrapper">
+			Post a message:<br/>
+			<form action='/add_message' method='POST'>
+				<textarea rows="4" cols="100" name="message" id="message"></textarea><br/>
+				<input type="submit" value="Post a message"></input>
+			</form>
+			
+			<div id="content">
+			  {% for message in all_messages %}
+				{{ message['first_name'] }} {{ message['last_name'] }} - {{ message['created_at'] }}
+				<p>{{ message['message'] }}</p>
+				<div class="indent">
+					{% for comment in all_comments %}
+						{% if comment['message_id'] == message['id'] %}							
+							{{ comment['first_name'] }} {{ comment['last_name'] }} - {{ comment['created_at'] }}
+							<p>{{ comment['comment'] }}</p>
+						{% endif %}
+					{% endfor %}
+					<form action='/reply_message' method='POST'>
+						<input type='hidden' value="{{ message['id'] }}" name="message_id" id="message_id" />
+						<textarea rows="4" cols="100" name="comment" id="comment"></textarea><br/>
+						<input type="submit" value="Post a reply"></input>
+					</form>
+				</div>
+			  {% endfor %}
+			</div>
+		</div>
+	</body>
+</html>

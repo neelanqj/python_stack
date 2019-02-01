@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Form Test Index</title>
+	   <style>
+			#gold {
+				width: 100%;
+				display: block;
+			}
+			.box {
+				width: 20%;
+				display: inline-block;
+				border: solid 1px black;
+				margin: 10px;
+				padding: 10px;
+				text-align: center;
+			}
+			#activities {
+				width: 100%;
+				display: block;
+			}
+			#wrapper {
+				margin: 50px;
+			}
+	   </style>
+    </head>
+    <body>
+		<div id="wrapper">
+			<div id="gold">
+				Your Gold: <input type="text" id="gold_count" value="{{ money }}" />
+			</div>
+			<div class="box">
+				<h1>Farm</h1>
+				(earns 10-20 gold)<br/>
+				<form action="/process_money" method="post">
+				  <input type="hidden" name="building" value="farm" />
+				  <input type="submit" value="Find Gold!"/>
+				</form>
+			</div>
+			<div class="box">
+				<h1>Cave</h1>
+				(earns 5-10 gold)<br/>
+				<form action="/process_money" method="post">
+				  <input type="hidden" name="building" value="cave" />
+				  <input type="submit" value="Find Gold!"/>
+				</form>
+			</div>
+			<div class="box">
+				<h1>House</h1>
+				(earns 2-5 gold)<br/>
+				<form action="/process_money" method="post">
+				  <input type="hidden" name="building" value="house" />
+				  <input type="submit" value="Find Gold!"/>
+				</form>
+			</div>
+			<div class="box">
+				<h1>Casino</h1>
+				(earns/takes 0-50 gold)<br/>
+				<form action="/process_money" method="post">
+				  <input type="hidden" name="building" value="casino" />
+				  <input type="submit" value="Find Gold!"/>
+				</form>
+			</div>
+			<div id="activities">
+				Activities:<br/>
+				<select id="activities" multiple>
+					{% for o in activities[::-1] %}
+						{% if o.value > 0 %}
+							<option style="color: green">{{ o.comment }}</option>
+						{% else %}
+							<option style="color: red">{{ o.comment }}</option>
+						{% endif %}
+					{% endfor %} 
+				</select>
+			</div>
+		</div>
+    </body>
+</html>

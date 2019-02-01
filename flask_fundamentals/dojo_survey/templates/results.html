@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Form Test Index</title>
+		<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/default.css') }}" />
+    </head>
+    <body>
+	<div>
+		<u><b>Submitted Info</b></u>
+		<table>
+			<tr>
+				<td>Name: </td><td>{{ name }} </td>
+			</tr>
+			<tr>
+				<td>Dojo Location: </td><td>{{ location }} </td>
+			</tr>
+			<tr>
+				<td>Favorite Language: </td><td>{{ language }} </td>
+			</tr>
+			<tr>
+				<td>Comment (optional): </td><td>{{ comment }} </td>
+			</tr>
+
+		</table>
+		<a class="button" href="/"> Go Back</a>
+	</div>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Time Display</title>
+		<meta charset="utf-8">
+		<style>
+			.max_size {
+				width:100%;
+			}
+			.box {
+				border: 1px solid black;
+				margin: 10px auto ;
+				display:block;
+				position: relative;
+			}
+			
+			.center {
+				text-align: center;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrapper center">
+			<form action="/surveys/process" method="post">
+				{% csrf_token %}
+				Your name: <input type="text" name="name" id="name" /><br/>
+				Dojo location: 
+				<select name="location" id="location">				
+				  <option value="volvo">Volvo</option>
+				  <option value="saab">Saab</option>
+				  <option value="mercedes">Mercedes</option>
+				  <option value="audi">Audi</option>
+				<select><br/>
+				
+				Favorite language: 
+				<select name="language" id="language">				
+				  <option value="volvo">Volvo</option>
+				  <option value="saab">Saab</option>
+				  <option value="mercedes">Mercedes</option>
+				  <option value="audi">Audi</option>
+				<select><br/>
+				Comment: <br/>
+				<textarea name="comment" id="comment"></textarea><br/>
+				<input type="submit" value="Submit" />
+			</form>
+		</div>
+	</body>
+</html>
